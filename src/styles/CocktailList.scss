@@ -1,0 +1,246 @@
+@use 'variables' as *;
+
+.cocktail-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 2fr) minmax(300px, 1fr);
+  gap: $spacing-xl;
+  max-width: calc($desktop + 180px);
+  width: 100%;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-xl $spacing-xl calc(180px + $spacing-xl);
+  min-height: 100vh;
+  align-items: start;
+
+  .cocktail-content {
+    max-width: 100%;
+  }
+
+  .cocktail-header {
+    margin-bottom: $spacing-lg;
+
+    h1 {
+      margin-bottom: $spacing-md;
+    }
+
+    .cocktail-variants {
+      display: flex;
+      gap: $spacing-sm;
+      flex-wrap: wrap;
+
+      .variant-button {
+        padding: $spacing-sm $spacing-md;
+        border: 1px solid $primary-color;
+        border-radius: $border-radius;
+        background: none;
+        color: $primary-color;
+        cursor: pointer;
+        transition: all $transition-duration $transition-timing;
+        font-size: $font-size-sm;
+
+        &:hover {
+          background-color: rgba($primary-color, 0.05);
+        }
+
+        &.active {
+          background-color: $primary-color;
+          color: $card-background;
+        }
+      }
+    }
+  }
+
+  .cocktail-image {
+    width: 100%;
+    max-width: 500px;
+    position: sticky;
+    top: $spacing-xl;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-lg;
+      object-fit: cover;
+    }
+  }
+}
+
+.cocktail-details {
+  padding-right: $spacing-xl;
+
+  h1 {
+    font-size: 2.5rem;
+    color: $text-primary;
+    margin-bottom: $spacing-lg;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: $text-primary;
+    margin-bottom: $spacing-md;
+    font-weight: 500;
+  }
+}
+
+.cocktail-properties {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-xl;
+
+  .property {
+    color: $text-secondary;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    &::before {
+      content: '•';
+      color: $primary-color;
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-right: $spacing-xs;
+    }
+  }
+}
+
+.instructions-section {
+  margin-bottom: $spacing-xl;
+
+  p {
+    color: $text-secondary;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+}
+
+.ingredients-section {
+  h2 {
+    margin-bottom: $spacing-lg;
+  }
+
+  .ingredients-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $spacing-md $spacing-lg;
+    align-items: baseline;
+  }
+
+  .ingredient-item {
+    display: contents;
+
+    .measure {
+      color: $primary-color;
+      font-weight: 500;
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    .ingredient {
+      color: $text-secondary;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: $spacing-xl;
+  padding-left: calc(180px + $spacing-xl);
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  color: $error-color;
+}
+
+@media (max-width: 1200px) {
+  .cocktail-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: $tablet) {
+  .cocktail-layout {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+    padding: calc($spacing-lg + 60px) $spacing-lg $spacing-lg;
+    max-width: 100%;
+  }
+
+  .cocktail-details {
+    padding-right: 0;
+  }
+
+  .loading,
+  .error {
+    padding: calc($spacing-lg + 60px) $spacing-lg $spacing-lg;
+  }
+
+  .cocktail-image {
+    position: static;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: $mobile) {
+  .cocktail-layout {
+    padding: calc($spacing-md + 60px) $spacing-md $spacing-md;
+    gap: $spacing-md;
+  }
+
+  .cocktail-details {
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: $spacing-md;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  .cocktail-properties {
+    margin-bottom: $spacing-lg;
+    
+    .property {
+      font-size: 1rem;
+    }
+  }
+
+  .instructions-section {
+    margin-bottom: $spacing-lg;
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .ingredients-section {
+    .ingredients-grid {
+      gap: $spacing-sm;
+      
+      .measure,
+      .ingredient {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .loading,
+  .error {
+    padding: calc($spacing-md + 60px) $spacing-md $spacing-md;
+    font-size: $font-size-md;
+  }
+} 

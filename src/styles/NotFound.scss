@@ -1,0 +1,62 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: $spacing-xl;
+  padding-left: calc(180px + $spacing-xl);
+  text-align: center;
+  color: $text-primary;
+
+  h1 {
+    font-size: $font-size-xxl;
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    font-size: $font-size-md;
+    margin-bottom: $spacing-xl;
+    color: $text-secondary;
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-size: $font-size-md;
+    transition: color $transition-duration $transition-timing;
+
+    &:hover {
+      color: color.adjust($primary-color, $lightness: -10%);
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .not-found {
+    padding: calc(60px + $spacing-lg) $spacing-lg $spacing-lg;
+  }
+}
+
+@media (max-width: $mobile) {
+  .not-found {
+    padding: calc(60px + $spacing-md) $spacing-md $spacing-md;
+
+    h1 {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-lg;
+    }
+
+    a {
+      font-size: $font-size-sm;
+    }
+  }
+} 
